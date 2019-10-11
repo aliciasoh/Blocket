@@ -27,6 +27,10 @@
         border-radius: 160px;
     }
 
+    a{
+        cursor: pointer;
+    }
+
     .fading {
         -webkit-animation: fade 4s;
         animation: fade 4s;
@@ -54,7 +58,59 @@
             100% {opacity:1}
         }
 
-    a{
-        cursor: pointer;
-    }
+        .sliding {
+            -webkit-animation: slidein 1s;
+            animation: slidein 1s;
+            -moz-animation: slidein 1s;
+            -o-animation: slidein 1s;
+        }
+            
+            @-webkit-keyframes slidein {
+                from {
+                    margin-left: 100%;
+                    width: 300%; 
+                  }
+                
+                  to {
+                    margin-left: 0%;
+                    width: 100%;
+                  }
+            }
+            
+            @-moz-keyframes slidein{
+                from {
+                    margin-left: 100%;
+                    width: 300%; 
+                  }
+                
+                  to {
+                    margin-left: 0%;
+                    width: 100%;
+                  }
+            }
+            
+            @keyframes slidein {
+                from {
+                    margin-left: 100%;
+                    width: 300%; 
+                  }
+                
+                  to {
+                    margin-left: 0%;
+                    width: 100%;
+                  }
+            }
+    
+            @-o-keyframes slidein {
+                from {
+                    margin-left: 100%;
+                    width: 300%; 
+                  }
+                
+                  to {
+                    margin-left: 0%;
+                    width: 100%;
+                  }
+            }
+    
 }

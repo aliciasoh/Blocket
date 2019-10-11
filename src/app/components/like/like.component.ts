@@ -11,7 +11,7 @@ export class LikeComponent implements OnInit {
 
   constructor(
   ) {
-    this.type = "likes";
+    this.type = "like";
    }
 
   ngOnInit() {

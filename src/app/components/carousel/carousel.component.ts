@@ -25,11 +25,13 @@ export class CarouselComponent implements OnInit {
     }
 
     // Not in use as unplash API only allows 50 calls per hour
-    // this.unsplashService.getUnsplashPhotosByCollection(this.type).toPromise().then(response=>{
-    //   this.allPhotos = response;
-    // }).catch(error=>{
-    //   alert("Error in getting photos, please try again!");
-    // })
+    // if (!!this.type) {
+    //   this.unsplashService.getUnsplashPhotosByCollection(this.type).toPromise().then(response => {
+    //     this.allPhotos = response;
+    //   }).catch(error => {
+    //     alert("Error in getting photos, please try again!");
+    //   })
+    // }
   }
 
   triggerCarousel(action, photos) {
@@ -52,28 +54,36 @@ export class CarouselComponent implements OnInit {
       for (let i in document.getElementsByClassName('image-0')) {
         if (!!document.getElementsByClassName('image-0')[i]['offsetParent'] && !!document.getElementsByClassName('image-0')[i]['offsetParent'].classList && !document.getElementsByClassName('image-0')[i]['offsetParent'].classList.contains("page--inactive")) {
           document.getElementsByClassName('image-0')[i].classList.add("fading");
-          setTimeout(() => {
-            this.clearAnimation();
-          }, 4000);
+        }
+      }
+      for (let i in document.getElementsByClassName('desc-0')) {
+        if (!!document.getElementsByClassName('desc-0')[i]['offsetParent'] && !!document.getElementsByClassName('desc-0')[i]['offsetParent'].classList && !document.getElementsByClassName('desc-0')[i]['offsetParent'].classList.contains("page--inactive")) {
+          document.getElementsByClassName('desc-0')[i].classList.add("sliding");
         }
       }
     }, 0);
   }
 
-  clearAnimation(){
+  clearAnimation() {
     $("img").removeClass("fading");
+    $("p").removeClass("sliding");
   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-
-    switch(event.key){
-      case "ArrowRight":
-          this.triggerCarousel('next', this.allPhotos, );
-        break;
-      case "ArrowLeft":
-          this.triggerCarousel('prev', this.allPhotos);
-        break;
+    for (let i in document.getElementsByClassName('carousel')) {
+      if (!!document.getElementsByClassName('carousel')[i]['offsetParent'] && !!document.getElementsByClassName('carousel')[i]['offsetParent'].classList && !document.getElementsByClassName('carousel')[i]['offsetParent'].classList.contains("page--inactive")) {
+        if(document.getElementsByClassName('carousel')[i]['offsetParent'].id.split("-")[1] == this.type){
+          switch (event.key) {
+            case "ArrowRight":
+              this.triggerCarousel('next', this.allPhotos);
+              break;
+            case "ArrowLeft":
+              this.triggerCarousel('prev', this.allPhotos);
+              break;
+          }
+        }
+      }
     }
   }
 
