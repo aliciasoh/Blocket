@@ -1,13 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
+
 <head>
   <meta charset="utf-8">
   <title>Blocket</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="./assets/js/modernizr-custom.js"></script>
 </head>
+
 <body>
   <app-root></app-root>
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+      let classieScript = document.createElement('script');
+      let dynamicScript = document.createElement('script');
+      let mainScript = document.createElement('script');
+
+      classieScript.src = './assets/js/classie.js';
+      dynamicScript.src = './assets/js/dynamics.min.js';
+      mainScript.src = './assets/js/main.js';
+
+      document.getElementsByTagName('body')[0].appendChild(classieScript);
+      document.getElementsByTagName('body')[0].appendChild(dynamicScript);
+      document.getElementsByTagName('body')[0].appendChild(mainScript);
+    });
+    </script>
 </body>
 </html>
