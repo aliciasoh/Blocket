@@ -3,6 +3,6 @@
                 <a><i class="fa fa-arrow-left" (click)="triggerCarousel('prev', allPhotos)"></i></a>
                 <img (swipeleft)="triggerCarousel('prev', allPhotos)" (swiperight)="triggerCarousel('next', allPhotos)" (swipedown)="toggleMenu('ArrowDown')" class="image-{{i}}" src="{{image.urls.regular}}"/>
                 <a><i class="fa fa-arrow-right" (click)="triggerCarousel('next', allPhotos)"></i></a>
-                <h4 class="description desc-{{i}}">{{image.description}}</h4>
+                <p class="description desc-{{i}}"><i>{{image.description}}</i></p>
         </div>
 </div>

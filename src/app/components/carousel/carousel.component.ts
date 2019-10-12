@@ -22,7 +22,6 @@ export class CarouselComponent implements OnInit {
       this.unsplashService.getMockUnsplashPhotosByQuery(this.type).toPromise().then(response => {
         this.allPhotos = response;
       }).catch(error=>{
-        alert("Error in getting photos, please try again!");
       })
     }
 
