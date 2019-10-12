@@ -14,13 +14,15 @@ export class CarouselComponent implements OnInit {
   allPhotos;
 
   constructor(
-    private unsplashService: UnsplashService
+    private unsplashService: UnsplashService,
   ) { }
 
   ngOnInit() {
     if (!!this.type) {
       this.unsplashService.getMockUnsplashPhotosByQuery(this.type).toPromise().then(response => {
         this.allPhotos = response;
+      }).catch(error=>{
+        alert("Error in getting photos, please try again!");
       })
     }
 
@@ -49,6 +51,23 @@ export class CarouselComponent implements OnInit {
     }
   }
 
+  toggleMenu(key) {
+    switch (key) {
+      case "ArrowDown":
+        if (!document.querySelector("nav").classList.contains("pages-nav--open")) {
+          let element: HTMLButtonElement = document.getElementsByClassName('menu-button')[0] as HTMLButtonElement;
+          element.click();
+        }
+        break;
+      case "ArrowUp":
+        if (document.querySelector("nav").classList.contains("pages-nav--open")) {
+          let element: HTMLButtonElement = document.getElementsByClassName('menu-button')[0] as HTMLButtonElement;
+          element.click();
+        }
+        break;
+    }
+  }
+
   triggerAnimation() {
     setTimeout(() => {
       for (let i in document.getElementsByClassName('image-0')) {
@@ -73,13 +92,19 @@ export class CarouselComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     for (let i in document.getElementsByClassName('carousel')) {
       if (!!document.getElementsByClassName('carousel')[i]['offsetParent'] && !!document.getElementsByClassName('carousel')[i]['offsetParent'].classList && !document.getElementsByClassName('carousel')[i]['offsetParent'].classList.contains("page--inactive")) {
-        if(document.getElementsByClassName('carousel')[i]['offsetParent'].id.split("-")[1] == this.type){
+        if (document.getElementsByClassName('carousel')[i]['offsetParent'].id.split("-")[1] == this.type) {
           switch (event.key) {
             case "ArrowRight":
               this.triggerCarousel('next', this.allPhotos);
               break;
             case "ArrowLeft":
               this.triggerCarousel('prev', this.allPhotos);
+              break;
+            case "ArrowDown":
+              this.toggleMenu(event.key);
+              break;
+            case "ArrowUp":
+              this.toggleMenu(event.key);
               break;
           }
         }

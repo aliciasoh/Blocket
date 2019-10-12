@@ -1,8 +1,8 @@
 <div class="carousel">
         <div *ngFor="let image of allPhotos; index as i">
                 <a><i class="fa fa-arrow-left" (click)="triggerCarousel('prev', allPhotos)"></i></a>
-                <img class="image-{{i}}" src="{{image.urls.regular}}"/>
+                <img (swipeleft)="triggerCarousel('prev', allPhotos)" (swiperight)="triggerCarousel('next', allPhotos)" (swipedown)="toggleMenu('ArrowDown')" class="image-{{i}}" src="{{image.urls.regular}}"/>
                 <a><i class="fa fa-arrow-right" (click)="triggerCarousel('next', allPhotos)"></i></a>
-                <p class="desc-{{i}}">{{image.description}}</p>
+                <h4 class="description desc-{{i}}">{{image.description}}</h4>
         </div>
 </div>

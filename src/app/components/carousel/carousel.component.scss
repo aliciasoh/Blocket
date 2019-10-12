@@ -1,3 +1,5 @@
+@import "carousel-animations.component.scss";
+
 .carousel{
     width:100%;
     height:60%;
@@ -5,15 +7,18 @@
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    @media only screen and (max-width: 425px) {
+        height:45%;
+    }
     >div{
         text-align: center;
         flex-shrink:0;
         -webkit-flex-shrink: 0;
-        max-width:70%;
+        max-width:100%;
         max-height:100%;
-        @media only screen and (min-width: 945px) {
+        @media only screen and (min-width: 40em) {
             max-width: 700px;
-          }
+        }
         &:not(:first-child){
             display: none
         }
@@ -26,94 +31,22 @@
         border: solid 10px white;
         border-radius: 160px;
     }
-
     a{
         cursor: pointer;
+        margin: 20px;
+        top: -130px;
+        position: relative;
+        @media only screen and (max-width: 40em) {
+            top: -25vw;
+        }
+        @media only screen and (max-width: 425px) {
+            margin: 0px;
+            top: 0px;
+            position: inherit;
+        }
     }
-    p{
-        font-size: 16px;
+    h4{
+        font-weight: 500;
     }
-
-    .fading {
-        -webkit-animation: fade 4s;
-        animation: fade 4s;
-        -moz-animation: fade 4s;
-        -o-animation: fade 4s;
-    }
-        
-        @-webkit-keyframes fade {
-            0% {opacity: 0} 
-            100% {opacity:1}
-        }
-        
-        @-moz-keyframes fade{
-            0% {opacity: 0} 
-            100% {opacity:1}
-        }
-        
-        @keyframes fade {
-            0% {opacity: 0} 
-            100% {opacity:1}
-        }
-
-        @-o-keyframes fade {
-            0% {opacity: 0} 
-            100% {opacity:1}
-        }
-
-        .sliding {
-            -webkit-animation: slidein 1s;
-            animation: slidein 1s;
-            -moz-animation: slidein 1s;
-            -o-animation: slidein 1s;
-        }
-            
-            @-webkit-keyframes slidein {
-                from {
-                    margin-left: 100%;
-                    width: 300%; 
-                  }
-                
-                  to {
-                    margin-left: 0%;
-                    width: 100%;
-                  }
-            }
-            
-            @-moz-keyframes slidein{
-                from {
-                    margin-left: 100%;
-                    width: 300%; 
-                  }
-                
-                  to {
-                    margin-left: 0%;
-                    width: 100%;
-                  }
-            }
-            
-            @keyframes slidein {
-                from {
-                    margin-left: 100%;
-                    width: 300%; 
-                  }
-                
-                  to {
-                    margin-left: 0%;
-                    width: 100%;
-                  }
-            }
-    
-            @-o-keyframes slidein {
-                from {
-                    margin-left: 100%;
-                    width: 300%; 
-                  }
-                
-                  to {
-                    margin-left: 0%;
-                    width: 100%;
-                  }
-            }
     
 }

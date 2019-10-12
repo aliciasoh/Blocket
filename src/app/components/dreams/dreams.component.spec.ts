@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DreamsComponent } from './dreams.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('DreamsComponent', () => {
   let component: DreamsComponent;
@@ -8,7 +10,8 @@ describe('DreamsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DreamsComponent ]
+      declarations: [ DreamsComponent, CarouselComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
@@ -19,7 +22,11 @@ describe('DreamsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('dreamscomponent should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('type should be "dreams"', () => {
+    expect(component.type).toEqual("dreams");
   });
 });

@@ -1,6 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component'
+import { MeComponent } from './components/me/me.component';
+import { LikeComponent } from './components/like/like.component';
+import { DreamsComponent } from './components/dreams/dreams.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,8 +15,14 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        MeComponent,
+        LikeComponent,
+        DreamsComponent,
+        CarouselComponent
       ],
+      providers: [ HttpClient, HttpHandler ]
     }).compileComponents();
   }));
 

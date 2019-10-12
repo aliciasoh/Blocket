@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LikeComponent } from './like.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('LikeComponent', () => {
   let component: LikeComponent;
@@ -8,7 +10,8 @@ describe('LikeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LikeComponent ]
+      declarations: [ LikeComponent, CarouselComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
@@ -19,7 +22,11 @@ describe('LikeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('likecomponent should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('type should be "like"', () => {
+    expect(component.type).toEqual("like");
   });
 });

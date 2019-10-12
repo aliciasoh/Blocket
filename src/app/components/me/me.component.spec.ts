@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MeComponent } from './me.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('MeComponent', () => {
   let component: MeComponent;
@@ -8,7 +10,8 @@ describe('MeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MeComponent ]
+      declarations: [ MeComponent, CarouselComponent ],
+      providers: [ HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
@@ -19,7 +22,11 @@ describe('MeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('mecomponent should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('type should be "me"', () => {
+    expect(component.type).toEqual("me");
   });
 });

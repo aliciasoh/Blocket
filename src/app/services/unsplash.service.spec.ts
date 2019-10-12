@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-
 import { UnsplashService } from './unsplash.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('UnsplashService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [HttpClient, HttpHandler]
+  }));
 
-  it('should be created', () => {
+  it('unsplashservice should be created', () => {
     const service: UnsplashService = TestBed.get(UnsplashService);
     expect(service).toBeTruthy();
   });
