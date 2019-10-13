@@ -7,7 +7,7 @@
 			<a class="link link--social link--faded" href="https://www.github.com/aliciasoh"><i class="fa fa-github"></i><span class="text-hidden">Github</span></a>
 		</div>
 	</nav>
-	<div class="pages-stack">
+	<div (swipeup)="toggleMenu('ArrowUp')" (swipedown)="toggleMenu('ArrowDown')"class="pages-stack">
 		<div class="page" id="page-me">
             <app-me></app-me>
 		</div>
