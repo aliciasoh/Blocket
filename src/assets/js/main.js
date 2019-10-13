@@ -117,6 +117,10 @@
 			var page = pages[stackPagesIdxs[i]];
 			page.style.WebkitTransform = 'translate3d(0, 75%, ' + parseInt(-1 * 200 - 50*i) + 'px)'; // -200px, -230px, -260px
 			page.style.transform = 'translate3d(0, 75%, ' + parseInt(-1 * 200 - 50*i) + 'px)';
+			if(!page.classList.contains("page--inactive") && page.id == "page-like"){
+				page.style = "transform: translate3d(0px, 75%, -200px); z-index: 3; opacity: 1;";
+				pages[0].style.opacity = 0.8;
+			}
 		}
 	}
 
